@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const handleIncrementalCount = () => {
+    setCount((count) => count + 1);
+  };
+
+  const handleDecreaseCount = () => {
+    setCount((count) => count - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-test="component-app">
+      <h1 data-test="counter-display">
+        The counter is currently: <span data-test="count">{count}</span>{" "}
+      </h1>
+      <button data-test="increment-button" onClick={handleIncrementalCount}>
+        {" "}
+        Increment Counter
+      </button>
+      <button data-test="decrement-button" onClick={handleDecreaseCount}>
+        {" "}
+        Decrease Counter
+      </button>
+      <h1>
+        <h2 data-test="countme-title">COUNTME</h2>
+      </h1>
     </div>
   );
 }
